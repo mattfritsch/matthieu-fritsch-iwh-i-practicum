@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        h1 Add music
+        div.form-wrapper
+            form(id="update-cobj" action="/update-cobj" method="POST")
+                div.form-group
+                    label(for="name") Name:
+                    input(id="name" type="text" name="name" required)
+                div.form-group
+                    label(for="artist") Artist:
+                    input(id="artist" type="text" name="artist" required)
+                div.form-group
+                    label(for="category") Category:
+                    input(id="category" type="text" name="category" required)
+                input.navButton(type="submit" value="Submit")
+        div.navButton
+            a(href="/") Return to the homepage

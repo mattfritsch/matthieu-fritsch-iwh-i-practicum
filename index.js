@@ -18,6 +18,7 @@ const customObjectId = process.env.CUSTOM_OBJECT_ID;
 const customObjectGetUrl = `https://api.hubapi.com/crm/v3/objects/${customObjectId}`;
 
 const homepageView = pug.compileFile('./views/homepage.pug');
+const formView = pug.compileFile('./views/updates.pug');
 
 app.get('/', async (req, res) => {
     const properties = [
@@ -40,9 +41,9 @@ app.get('/', async (req, res) => {
     try {
         const resp = await axios.get(url, { headers });
         const response = resp.data.results;
-        console.log(response)
 
         res.send(homepageView({
+            title: 'Homepage |  Integrating With HubSpot I Practicum',
             response: response
         }))
 
@@ -52,9 +53,11 @@ app.get('/', async (req, res) => {
 
 });
 
-// TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
-
-// * Code for Route 2 goes here
+app.get('/update-cobj', async (req, res) => {
+    res.send(formView({
+        title: 'Update Custom Object Form | Integrating With HubSpot I Practicum'
+    }))
+})
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
